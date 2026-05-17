@@ -6,16 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tonette's Minimart — POS / Admin</title>
     <script type="text/javascript">
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
-            return s.replace(/~and~/g, '&')
-          })
-          window.history.replaceState(null, null,
-            l.pathname + decoded[0] + (decoded[1] ? '?' + decoded[1] : '') + l.hash
-          );
+      (function() {
+        var redirect = sessionStorage.getItem('redirect');
+        if (redirect && redirect !== '/tonette-minimart/') {
+          sessionStorage.removeItem('redirect');
+          window.history.replaceState(null, null, redirect);
         }
-      }(window.location))
+      })();
     </script>
     <script type="module" crossorigin src="/tonette-minimart/assets/index-D7V91jDW.js"></script>
     <link rel="stylesheet" crossorigin href="/tonette-minimart/assets/index-YRZY1drO.css">
